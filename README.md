@@ -24,10 +24,10 @@ To run a code 3 libraries are needed
 
 
 ## References
-1[1]: https://www.geeksforgeeks.org/exploratory-data-analysis-on-iris-dataset/
-2[2]: https://towardsdatascience.com/the-iris-dataset-a-little-bit-of-history-and-biology-fb4812f5a7b5
-3[3]: https://archive.ics.uci.edu/ml/datasets/iris
-4[4]: https://en.wikipedia.org/wiki/Iris_flower_data_set
+1. [1]: https://www.geeksforgeeks.org/exploratory-data-analysis-on-iris-dataset/  
+2. [2]: https://towardsdatascience.com/the-iris-dataset-a-little-bit-of-history-and-biology-fb4812f5a7b5  
+3. [3]: https://archive.ics.uci.edu/ml/datasets/iris  
+4. [4]: https://en.wikipedia.org/wiki/Iris_flower_data_set  
 
 
 ## Further reading
