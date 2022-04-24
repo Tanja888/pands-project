@@ -7,6 +7,7 @@
 # Took the data set and the description of it from here:
 # URL: https://archive.ics.uci.edu/ml/datasets/iris
 
+from os import stat_result
 import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
@@ -49,7 +50,6 @@ print("The means of species are:\n")
 mean = groupedSpecies.mean()
 print(mean)
 
-
 groupedSpecies2 = irisData.groupby(['sepal_length', 'species']) #to group by 2 variables
 print(groupedSpecies2.mean())
 
@@ -65,13 +65,16 @@ print(counts)
 #counts = irisData.groupby('species')['species'].count()['Iris-setosa']
 #print(counts)
 
+
+stats = groupedSpecies.describe()
+print(stats)
+
 # trying to print results into a textfile
 filename = 'allstats.txt'
 with open(filename, 'w+t') as f:
-    f.write(str("Basic statistics for petal length") + "\n" + str(petal_length_stats) + "\n\n" + str(mean) + "\n\n" + str(counts))
+    f.write(str("Basic statistics for petal length") + "\n" + str(petal_length_stats) + "\n\n" + str(mean) + "\n\n" + str(counts) + "\n\n" + str(stats))
     #f.write(str(counts))
 
 #https://stackoverflow.com/questions/65202315/print-variable-to-txt-file
 #https://stackoverflow.com/questions/27324159/how-to-write-a-blank-line-to-a-text-file
-
 
