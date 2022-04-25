@@ -8,12 +8,6 @@ Python 3.9.7
 ## Data 
 Iris data set includes three classes: Iris Setosa, Iris Versicolor and Iris Virginica with 4 attributes measured in centimeters: sepal length, sepal width, petal length and petal width. The total number of instances is 150.
 
-## Structure
-This project has 3 main parts: 
-1. Sneak peek into data set
-2. Statistics and Data Visualization
-3. Conclusions and further reading
-
 ## Setup
 Three libraries were needed for the analysis:
 ```python
@@ -22,14 +16,14 @@ Three libraries were needed for the analysis:
     import numpy as np
 ```
 
-## 1. Sneak peek into data set 
-To start analysing the data, first we had to import the csv file and use pandas to get the 'irisData' data frame.
+## Sneak peek into data set 
+### Data import
+First, we had to import the csv file using pandas to get the 'irisData' data frame.
 ```python
     irisData = pd.read_csv('iris.csv', sep =',', names=['sepal_length' , 'sepal_width' , 
     'petal_length' , 'petal_width' , 'species'])
 ```
-
-To get familiar with the data we ran some basic analysis.
+### Describing data
 We used methods to: check the shape of the data, get the first few and the last few rows and see the columns: 
 ```python
     irisData.shape
@@ -51,12 +45,12 @@ We also checked for unique values inside the species and if there are any null v
 ```
 
 ## 2. Statistics and Data Visualization 
-For starters, we checked how many of each species we have using the groupby and count method
+By using the groupby and count method, we checked how many of each species there are
 ```python 
     counts = irisData.groupby('species')['species'].count()
 ```
 
-Summary statistics for each variable; sl_stats for sepal length, we did the same with the other variables
+Summary statistics for each variable using describe method; 
 ```python
     sl_stats = irisData['sepal_length'].describe()
 ```
