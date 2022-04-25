@@ -1,47 +1,99 @@
 # Fisher's Iris data set analysis
 # Author: Tanja Juric
 
-# First, I wanted to add the column names to the data, found it here:
-# URL: https://datascience.stackexchange.com/questions/45314/dataframe-has-no-column-names-how-to-add-a-header
-# Used pandas to read csv and assigned the names to the columns
-# Took the data set and the description of it from here:
-# URL: https://archive.ics.uci.edu/ml/datasets/iris
-
-from os import stat_result
+# Imported three libraries needed for the analysis
 import pandas as pd
-import matplotlib.pyplot as plt
 import numpy as np
+import matplotlib.pyplot as plt
+
+
+# 1. Data
+# Data set is in the csv format, having the values separated by commas
+# To be able to work with data I used pandas to read the csv file and created the irisData data frame 
+# Then, I assigned the names to the variables
+# Four of them are numeric describing petals and sepals and one is categorical for the species of the flower
 
 irisData = pd.read_csv('iris.csv', sep =',', names=['sepal_length' , 'sepal_width' , 'petal_length' , 'petal_width' , 'species'])
-#irisData is actually a data frame
 
+# By printing the new variable irisData we can see that the indexes were assigned to the rows and the names to the columns
 print(irisData)
-irisData.shape #this tells me how many rows and columns there are
 
-#.head() shows the first five lines to see how will data display; it's a method 
-# URL: https://www.w3resource.com/pandas/dataframe/dataframe-head.php
-print(irisData.head(4)) 
+# To see the dimensionality of data frame we can use the shape method; it shows the number of rows and columns
+print(irisData.shape)
 
-# pandas and data frames nicely explained; for now I am trying things from here:
-# URL https://datacarpentry.org/python-ecology-lesson/02-starting-with-data/
+# To see how data will be displayed, especially with the big amount of data we can use head() method to see the first few rows
+print(irisData.head(4))
 
+# Or the tail() for the last few rows
+print(irisData.tail(4))
 
+# To see what type of data structure are we dealing with we can use the type class
 print(type(irisData)) #says that irisData is a data frame
-print(irisData.dtypes) #types od data inside data frame
 
-print(irisData.tail(2)) #shows last two rows
+# To see data types inside the data frame we can use dtypes
+# it shows that all variables are float64 except the species
+print(irisData.dtypes) 
 
-
+# We can also check what columns we have
 print(irisData.columns)
 
+# To get the unique values inside the species unique() method was used; it returns a list
+print(pd.unique(irisData['species']))
 
-print(pd.unique(irisData['species'])) #to see how many unique values in the column species, returns a list
+# This is from Chartio website, I put the reference in Readme
+# Even if we know that there are no missing values, for the sake of practice we can use .isnull() method to check it
+# It will show all the rows
+print(irisData.isnull()) 
+# Also, we can check if there are any missing values
+# The result returns in boolean form, True or False
+print(irisData.isnull().values.any())
+# We can do the sum of missing values and show it for each variable
+print(irisData.isnull().sum())
+# Or, we can check the sum of all missing values for all the variables
+print(irisData.isnull().sum().sum())
 
-petal_length_stats = irisData['petal_length'].describe()     #to get basic statistics for a column
-print(petal_length_stats)
 
-print("Minimum value of petal length is:", irisData['petal_length'].min(), "cm")
+# 2. Statistics
+# In this part I did some basic statistics and summaries
+# First to see how are data distributed based on the species
+# I used groupby() and count() methods together
 
+counts = irisData.groupby('species')['species'].count()
+# we can get the same with value_counts()
+#counts = irisData['species'].value_counts()
+print(counts)
+
+
+# Histogram of distribution of species showed in .png file
+plt.hist(irisData['species'])
+plt.savefig("species_count.png")
+plt.show()
+
+# Summary statistics for each variable
+sl_stats = irisData['sepal_length'].describe()
+print(sl_stats)
+
+sw_stats = irisData['sepal_width'].describe()
+print(sw_stats)
+
+pl_stats = irisData['petal_length'].describe() 
+print(pl_stats)
+
+pw_stats = irisData['petal_width'].describe()
+print(pw_stats)
+
+# To output the results into the text file, I created a new file 'allstats.txt'
+filename = 'allstats.txt'
+with open(filename, 'w+t') as f:
+    f.write(str(counts) + "\n\n" + str(sl_stats) + "\n\n" + str(sw_stats) + "\n\n" + str(pl_stats) + "\n\n" + str(pw_stats))
+
+
+
+'''
+#print(irisData.describe())
+
+groupedSpecies = irisData.groupby('species')
+print(groupedSpecies.describe())
 
 #summarize by variable; .groupby method
 groupedSpecies = irisData.groupby('species')
@@ -50,31 +102,11 @@ print("The means of species are:\n")
 mean = groupedSpecies.mean()
 print(mean)
 
-groupedSpecies2 = irisData.groupby(['sepal_length', 'species']) #to group by 2 variables
-print(groupedSpecies2.mean())
+#groupedSpecies2 = irisData.groupby(['sepal_length', 'species']) #to group by 2 variables
+#print(groupedSpecies2.mean())
 
-print(irisData['sepal_length'].describe())
+#stats = groupedSpecies.describe()
+#print(stats)
+'''
 
-
-# summary counts
-# groupby and count() method together
-counts = irisData.groupby('species')['species'].count()
-#counts = irisData.groupby('sepal_length')['sepal_length'].count()
-print(counts)
-
-#counts = irisData.groupby('species')['species'].count()['Iris-setosa']
-#print(counts)
-
-
-stats = groupedSpecies.describe()
-print(stats)
-
-# trying to print results into a textfile
-filename = 'allstats.txt'
-with open(filename, 'w+t') as f:
-    f.write(str("Basic statistics for petal length") + "\n" + str(petal_length_stats) + "\n\n" + str(mean) + "\n\n" + str(counts) + "\n\n" + str(stats))
-    #f.write(str(counts))
-
-#https://stackoverflow.com/questions/65202315/print-variable-to-txt-file
-#https://stackoverflow.com/questions/27324159/how-to-write-a-blank-line-to-a-text-file
 
