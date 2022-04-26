@@ -2,6 +2,7 @@
 # Author: Tanja Juric
 
 # Imported three libraries needed for the analysis
+from tkinter.font import names
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -14,6 +15,7 @@ import matplotlib.pyplot as plt
 # Four of them are numeric describing petals and sepals and one is categorical for the species of the flower
 
 irisData = pd.read_csv('iris.csv', sep =',', names=['sepal_length' , 'sepal_width' , 'petal_length' , 'petal_width' , 'species'])
+#names=['sepal_length' , 'sepal_width' , 'petal_length' , 'petal_width' , 'species'] 
 
 # By printing the new variable irisData we can see that the indexes were assigned to the rows and the names to the columns
 print(irisData)
@@ -67,7 +69,7 @@ print(counts)
 # Histogram of distribution of species showed in .png file
 plt.hist(irisData['species'])
 plt.savefig("species_count.png")
-plt.show()
+#plt.show()
 
 # Summary statistics for each variable
 sl_stats = irisData['sepal_length'].describe()
@@ -87,6 +89,39 @@ filename = 'allstats.txt'
 with open(filename, 'w+t') as f:
     f.write(str(counts) + "\n\n" + str(sl_stats) + "\n\n" + str(sw_stats) + "\n\n" + str(pl_stats) + "\n\n" + str(pw_stats))
 
+# histograms for each variable separately
+# need to add labels and change the colour
+plt.hist(irisData['sepal_length'])
+plt.savefig("sepal_length_distr.png")
+plt.show()
+
+plt.hist(irisData['sepal_width'])
+plt.savefig("sepal_width_distr.png")
+plt.show()
+
+plt.hist(irisData['petal_length'])
+plt.savefig("petal_length_distr.png")
+plt.show()
+
+plt.hist(irisData['petal_width'])
+plt.savefig("petal_width_distr.png")
+plt.show()
+
+# histogram of four variables together
+# for this section I followed github example, joeajames, reference in Readme
+
+'''
+# when we call histograms separately they overlap which is handy for comaparison 
+# we can adjust the opacity with alpha to show them easier like in an example
+# change the colour
+plt.hist(irisData['sepal_length'], alpha=1, label='sepal_length', color='#f5ccff')
+plt.hist(irisData['sepal_width'], alpha=1, label='sepal_width', color='#db4dff')
+plt.hist(irisData['petal_length'], alpha=1, label='petal_length', color='#b800e6')
+plt.hist(irisData['petal_width'], alpha=1, label='petal_width', color='#3d004d')
+plt.legend()
+plt.savefig("all_variables.png")
+plt.show()
+'''
 
 
 '''

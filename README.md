@@ -9,7 +9,7 @@ Python 3.9.7
 Iris data set includes three classes: Iris Setosa, Iris Versicolor and Iris Virginica with 4 attributes measured in centimeters: sepal length, sepal width, petal length and petal width. The total number of instances is 150.
 
 ## Setup
-Three libraries were needed for the analysis:
+Three libraries were used for the analysis:
 ```python
     import pandas as pd
     import matplotlib.pyplot as plt
@@ -44,8 +44,8 @@ We also checked for unique values inside the species and if there are any null v
     irisData.isnull()
 ```
 
-## 2. Statistics and Data Visualization 
-By using the groupby and count method, we checked how many of each species there are
+## Statistics and Data Visualization 
+By using the groupby and count method, we checked how many instances of each species there are
 ```python 
     counts = irisData.groupby('species')['species'].count()
 ```
@@ -70,15 +70,16 @@ with open(filename, 'w+t') as f:
 
 1:  https://www.geeksforgeeks.org/exploratory-data-analysis-on-iris-dataset/  
 2:  https://towardsdatascience.com/the-iris-dataset-a-little-bit-of-history-and-biology-fb4812f5a7b5  
-3:  https://archive.ics.uci.edu/ml/datasets/iris  
-4:  https://en.wikipedia.org/wiki/Iris_flower_data_set   
+3:  https://en.wikipedia.org/wiki/Iris_flower_data_set  
+4:  https://archive.ics.uci.edu/ml/datasets/iris
 5:  https://datascience.stackexchange.com/questions/45314/dataframe-has-no-column-names-how-to-add-a-header  
 6:  https://www.w3resource.com/pandas/dataframe/dataframe-head.php  
 7:  https://datacarpentry.org/python-ecology-lesson/02-starting-with-data/  
 8:  https://chartio.com/resources/tutorials/how-to-check-if-any-value-is-nan-in-a-pandas-dataframe/  
 9:  https://stackoverflow.com/questions/65202315/print-variable-to-txt-file    
-10: https://stackoverflow.com/questions/27324159/how-to-write-a-blank-line-to-a-text-file 
-
+10: https://stackoverflow.com/questions/27324159/how-to-write-a-blank-line-to-a-text-file  
+11: https://github.com/joeyajames/Python/blob/master/Iris%20Dataset/Iris_Dataset.ipynb  
+12: 
 
 
 ## Further reading
