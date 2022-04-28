@@ -71,8 +71,8 @@ with open(filename, 'w+t') as f:
 1:  https://www.geeksforgeeks.org/exploratory-data-analysis-on-iris-dataset/  
 2:  https://towardsdatascience.com/the-iris-dataset-a-little-bit-of-history-and-biology-fb4812f5a7b5  
 3:  https://en.wikipedia.org/wiki/Iris_flower_data_set  
-4:  https://archive.ics.uci.edu/ml/datasets/iris
-5:  https://datascience.stackexchange.com/questions/45314/dataframe-has-no-column-names-how-to-add-a-header  
+4:  https://archive.ics.uci.edu/ml/datasets/iris  
+5:  https://datascience.stackexchange.com/question45314dataframe-has-no-column-names-how-to-add-a-header    
 6:  https://www.w3resource.com/pandas/dataframe/dataframe-head.php  
 7:  https://datacarpentry.org/python-ecology-lesson/02-starting-with-data/  
 8:  https://chartio.com/resources/tutorials/how-to-check-if-any-value-is-nan-in-a-pandas-dataframe/  
