@@ -5,6 +5,8 @@
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
+import seaborn as sns
+
 
 # 1. Data
 # Data set is in the csv format, having the values separated by commas
@@ -83,33 +85,44 @@ print(pl_stats)
 pw_stats = irisData['petal_width'].describe()
 print(pw_stats)
 
+#all together
+allstat = irisData.describe()
+print(allstat)
+
+#correlation betweeen variables
+correlation = irisData.corr()
+print(correlation)
+
+sns.heatmap(correlation, annot=True)
+plt.show()
+
 # To output the results into the text file, I created a new file 'allstats.txt'
 filename = 'allstats.txt'
 with open(filename, 'w+t') as f:
-    f.write(str(counts) + "\n\n" + str(sl_stats) + "\n\n" + str(sw_stats) + "\n\n" + str(pl_stats) + "\n\n" + str(pw_stats))
+    f.write(str(counts) + "\n\n" + str(sl_stats) + "\n\n" + str(sw_stats) + "\n\n" + str(pl_stats) 
+    + "\n\n" + str(pw_stats) + "\n\n" + str(allstat) + "\n\n" + str(correlation))
 
 
 # histograms for each variable separately
-# need to add labels and change the colour
 plt.hist(irisData['sepal_length'], color='#9900ff')
 plt.title(label='Sepal length', color='#b84dff')
 plt.savefig("sepal_length.png")
-plt.show()
+#plt.show()
 
 plt.hist(irisData['sepal_width'], color ='#5c0099')
 plt.title(label='Sepal width', color='#b84dff')
 plt.savefig("sepal_width.png")
-plt.show()
+#plt.show()
 
 plt.hist(irisData['petal_length'], color='#cc80ff')
 plt.title(label='Petal length', color='#b84dff')
 plt.savefig("petal_length.png")
-plt.show()
+#plt.show()
 
 plt.hist(irisData['petal_width'], color='#ebccff')
 plt.title(label='Petal width', color='#b84dff')
 plt.savefig("petal_width.png")
-plt.show()
+#plt.show()
 
 # histogram of four variables together
 # when we call histograms separately they overlap which is handy for comparison 
@@ -119,7 +132,11 @@ plt.hist(irisData['petal_length'], label='petal_length', color='#cc80ff')
 plt.hist(irisData['petal_width'], label='petal_width', color='#ebccff')
 plt.legend()
 plt.savefig("all_variables.png")
-plt.show()
+#plt.show()
+
+
+
+
 
 
 

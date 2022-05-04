@@ -50,9 +50,10 @@ By using the groupby and count method, we checked how many instances of each spe
     counts = irisData.groupby('species')['species'].count()
 ```
 
-Summary statistics for each variable using describe method; 
+Summary statistics using describe method; 
 ```python
     sl_stats = irisData['sepal_length'].describe()
+    allstat = irisData.describe()
 ```
 
 All of the summary statistics are outputting into .txt file 'allstats.txt'
@@ -61,6 +62,13 @@ All of the summary statistics are outputting into .txt file 'allstats.txt'
 with open(filename, 'w+t') as f:
     f.write(str(counts) + ... + str(pw_stats))
 ```
+
+Histograms of variables saved into png files
+```python
+    plt.hist(irisData['sepal_length'], color='#9900ff')
+    plt.savefig("sepal_length.png")
+```
+
 
 ## References
 [1]: https://www.geeksforgeeks.org/exploratory-data-analysis-on-iris-dataset/        
