@@ -8,6 +8,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 
+
 # 1. Data
 # Data set is in the csv format, having the values separated by commas
 # To be able to work with data I used pandas to read the csv file and created the irisData data frame 
@@ -71,7 +72,6 @@ plt.title(label='Distribution of species', color='#b84dff')
 plt.savefig("species_count.png")
 plt.show()
 
-
 # Summary statistics for each variable
 sl_stats = irisData['sepal_length'].describe()
 print(sl_stats)
@@ -93,9 +93,6 @@ print(allstat)
 correlation = irisData.corr()
 print(correlation)
 
-sns.heatmap(correlation, annot=True)
-plt.show()
-
 # To output the results into the text file, I created a new file 'allstats.txt'
 filename = 'allstats.txt'
 with open(filename, 'w+t') as f:
@@ -107,22 +104,22 @@ with open(filename, 'w+t') as f:
 plt.hist(irisData['sepal_length'], color='#9900ff')
 plt.title(label='Sepal length', color='#b84dff')
 plt.savefig("sepal_length.png")
-#plt.show()
+plt.show()
 
 plt.hist(irisData['sepal_width'], color ='#5c0099')
 plt.title(label='Sepal width', color='#b84dff')
 plt.savefig("sepal_width.png")
-#plt.show()
+plt.show()
 
 plt.hist(irisData['petal_length'], color='#cc80ff')
 plt.title(label='Petal length', color='#b84dff')
 plt.savefig("petal_length.png")
-#plt.show()
+plt.show()
 
 plt.hist(irisData['petal_width'], color='#ebccff')
 plt.title(label='Petal width', color='#b84dff')
 plt.savefig("petal_width.png")
-#plt.show()
+plt.show()
 
 # histogram of four variables together
 # when we call histograms separately they overlap which is handy for comparison 
@@ -132,32 +129,24 @@ plt.hist(irisData['petal_length'], label='petal_length', color='#cc80ff')
 plt.hist(irisData['petal_width'], label='petal_width', color='#ebccff')
 plt.legend()
 plt.savefig("all_variables.png")
-#plt.show()
+plt.show()
 
+# correlation using seaborn and heatmap
+sns.heatmap(correlation, annot=True)
+plt.title(label="Correlation")
+plt.savefig("correlation.png")
+plt.show()
 
-
-
-
-
-
-'''
-#print(irisData.describe())
-
-groupedSpecies = irisData.groupby('species')
-print(groupedSpecies.describe())
-
-#summarize by variable; .groupby method
-groupedSpecies = irisData.groupby('species')
-print(groupedSpecies.describe())
-print("The means of species are:\n")
-mean = groupedSpecies.mean()
-print(mean)
-
-#groupedSpecies2 = irisData.groupby(['sepal_length', 'species']) #to group by 2 variables
-#print(groupedSpecies2.mean())
-
-#stats = groupedSpecies.describe()
-#print(stats)
-'''
-
+# Scatter plots to show relationships between variables
+# Followed this link: https://www.youtube.com/watch?v=02BFXhPQWHQ
+plt.subplots_adjust(left=0.1, bottom=0.2, right=None, top=None, wspace=None, hspace=None) #to show nicer
+colors = {'Iris-setosa':'#5c0099', 'Iris-versicolor':'#9900ff', 'Iris-virginica':'#ebccff'}
+plt.scatter(
+irisData['sepal_length'], 
+irisData['sepal_width'],
+c=irisData['species'].map(colors))
+plt.xlabel('sepal_length')
+plt.ylabel('sepal_width')
+plt.savefig("sl_sw.png")
+plt.show()
 
