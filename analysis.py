@@ -139,7 +139,7 @@ plt.show()
 
 # Scatter plots to show relationships between variables
 # Followed this link: https://www.youtube.com/watch?v=02BFXhPQWHQ
-plt.subplots_adjust(left=0.1, bottom=0.2, right=None, top=None, wspace=None, hspace=None) #to show nicer
+plt.subplots_adjust(left=0.1, bottom=0.2, right=None, top=None, wspace=None, hspace=None) #shows nicer
 colors = {'Iris-setosa':'#5c0099', 'Iris-versicolor':'#9900ff', 'Iris-virginica':'#ebccff'}
 plt.scatter(
 irisData['sepal_length'], 
@@ -150,3 +150,52 @@ plt.ylabel('sepal_width')
 plt.savefig("sl_sw.png")
 plt.show()
 
+plt.subplots_adjust(left=0.1, bottom=0.2, right=None, top=None, wspace=None, hspace=None)
+plt.scatter(
+irisData['petal_length'], 
+irisData['petal_width'],
+c=irisData['species'].map(colors))
+plt.xlabel('petal_length')
+plt.ylabel('petal_width')
+plt.savefig("pl_pw.png")
+plt.show()
+
+plt.subplots_adjust(left=0.1, bottom=0.2, right=None, top=None, wspace=None, hspace=None)
+plt.scatter(
+irisData['sepal_length'], 
+irisData['petal_length'],
+c=irisData['species'].map(colors))
+plt.xlabel('sepal_length')
+plt.ylabel('petal_length')
+plt.savefig("sl_pl.png")
+plt.show()
+
+plt.subplots_adjust(left=0.1, bottom=0.2, right=None, top=None, wspace=None, hspace=None)
+plt.scatter(
+irisData['sepal_length'], 
+irisData['petal_width'],
+c=irisData['species'].map(colors))
+plt.xlabel('sepal_length')
+plt.ylabel('petal_width')
+plt.savefig("sl_pw.png")
+plt.show()
+
+plt.subplots_adjust(left=0.1, bottom=0.2, right=None, top=None, wspace=None, hspace=None)
+plt.scatter(
+irisData['petal_length'], 
+irisData['sepal_width'],
+c=irisData['species'].map(colors))
+plt.xlabel('petal_length')
+plt.ylabel('sepal_width')
+plt.savefig("pl_sw.png")
+plt.show()
+
+plt.subplots_adjust(left=0.1, bottom=0.2, right=None, top=None, wspace=None, hspace=None)
+plt.scatter(
+irisData['sepal_width'], 
+irisData['petal_width'],
+c=irisData['species'].map(colors))
+plt.xlabel('sepal_width')
+plt.ylabel('petal_width')
+plt.savefig("sw_pw.png")
+plt.show()
