@@ -109,4 +109,5 @@ The most obvious conclusion is how different characteristics Iris setosa has com
 9:  https://stackoverflow.com/questions/65202315/print-variable-to-txt-file    
 10: https://stackoverflow.com/questions/27324159/how-to-write-a-blank-line-to-a-text-file  
 11: https://github.com/joeyajames/Python/blob/master/Iris%20Dataset/Iris_Dataset.ipynb  
-12: https://www.youtube.com/watch?v=02BFXhPQWHQ
+12: https://www.youtube.com/watch?v=02BFXhPQWHQ  
+13: https://towardsdatascience.com/how-to-use-your-own-color-palettes-with-seaborn-a45bf5175146  
