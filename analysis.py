@@ -7,8 +7,6 @@ import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-
-
 # 1. Data
 # Data set is in the csv format, having the values separated by commas
 # To be able to work with data I used pandas to read the csv file and created the irisData data frame 
@@ -199,3 +197,16 @@ plt.xlabel('sepal_width')
 plt.ylabel('petal_width')
 plt.savefig("sw_pw.png")
 plt.show()
+
+
+#pairplot 
+#had to create a palette to use colors of my choice
+#https://towardsdatascience.com/how-to-use-your-own-color-palettes-with-seaborn-a45bf5175146
+cols = ["#5c0099", "#9900ff", "#ebccff"]
+sns.set_palette(sns.color_palette(cols))
+sns.pairplot(irisData, hue='species', palette=cols)
+plt.grid(True)
+plt.savefig("pairplot.png")
+plt.show()
+
+
