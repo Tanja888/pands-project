@@ -9,11 +9,12 @@ Python 3.9.7
 Iris data set includes three classes: Iris Setosa, Iris Versicolor and Iris Virginica with 4 attributes measured in centimeters: sepal length, sepal width, petal length and petal width. The total number of instances is 150.
 
 ## Setup
-Three libraries were used for the analysis:
+Four libraries were used for the analysis:
 ```python
     import pandas as pd
     import matplotlib.pyplot as plt
     import numpy as np
+    import seaborn as sns
 ```
 
 ## Sneak peek into data set 
@@ -50,7 +51,7 @@ By using the groupby and count method, we checked how many instances of each spe
     counts = irisData.groupby('species')['species'].count()
 ```
 
-Summary statistics using describe method; 
+Summary statistics using describe method
 ```python
     sl_stats = irisData['sepal_length'].describe()
     allstat = irisData.describe()
@@ -63,12 +64,33 @@ with open(filename, 'w+t') as f:
     f.write(str(counts) + ... + str(pw_stats))
 ```
 
-Histograms of variables saved into png files
+Histograms of variables saved into png files, each variable separately and also together in all_variables.png
 ```python
     plt.hist(irisData['sepal_length'], color='#9900ff')
     plt.savefig("sepal_length.png")
 ```
 
+Correlation between variables using heatmap; there is a high correlation between petal length and petal width
+```python
+    sns.heatmap(correlation, annot=True)
+    plt.savefig("correlation.png")
+```
+
+The correlations between each pair of variables using scatter plots
+```python 
+    plt.scatter(
+    irisData['sepal_length'], 
+    irisData['sepal_width'])
+    plt.savefig("sl_sw.png")
+```
+
+To show all the correlations in one place which is easier to look at we used pairplots;
+The most obvious conclusion is how different characteristics Iris setosa has compared to Iris Versicolor and Iris Virginica. 
+```python
+    sns.pairplot(irisData, hue='species', palette=cols)
+    plt.grid(True)
+    plt.savefig("pairplot.png")
+```
 
 ## References
 [1]: https://www.geeksforgeeks.org/exploratory-data-analysis-on-iris-dataset/        
@@ -87,17 +109,4 @@ Histograms of variables saved into png files
 9:  https://stackoverflow.com/questions/65202315/print-variable-to-txt-file    
 10: https://stackoverflow.com/questions/27324159/how-to-write-a-blank-line-to-a-text-file  
 11: https://github.com/joeyajames/Python/blob/master/Iris%20Dataset/Iris_Dataset.ipynb  
-12: 
-
-
-## Further reading
-
-
-## To-do - I divided the project into these tasks:
-- [x] about Fisher's Iris data set
-- [ ] import data and run some statistics
-- [x] export analysis to text file
-- [ ] create histograms
-- [ ] create scatter plot
-- [ ] conclusions 
-- [ ] make a nice readme and add references
+12: https://www.youtube.com/watch?v=02BFXhPQWHQ

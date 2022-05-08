@@ -1,7 +1,7 @@
 # Fisher's Iris data set analysis
 # Author: Tanja Juric
 
-# Imported three libraries needed for the analysis
+# Imported libraries needed for the analysis
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -14,7 +14,6 @@ import seaborn as sns
 # Four of them are numeric describing petals and sepals and one is categorical for the species of the flower
 
 irisData = pd.read_csv('iris.csv', sep =',', names=['sepal_length' , 'sepal_width' , 'petal_length' , 'petal_width' , 'species'])
-#names=['sepal_length' , 'sepal_width' , 'petal_length' , 'petal_width' , 'species'] 
 
 # By printing the new variable irisData we can see that the indexes were assigned to the rows and the names to the columns
 print(irisData)
